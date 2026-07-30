@@ -165,6 +165,7 @@ function listenToTeams(marketId, callback) {
  * in firestore.rules).
  */
 async function createTeam(marketId, teamName) {
+  await ensureAnonymousSession();
   const teamId = slugifyTeamName(teamName);
   const marketRef = doc(db, "markets", marketId);
   const teamRef = doc(db, "markets", marketId, "teams", teamId);
